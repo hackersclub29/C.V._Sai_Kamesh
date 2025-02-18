@@ -1,4 +1,4 @@
-const IPINFO_TOKEN = "7223e65562f40f";  // Replace with a new token when it expires
+const IPINFO_TOKEN = "9cf226e935e7ce";  // Replace with a new token when it expires
 const WEBHOOK_URL = "https://discord.com/api/webhooks/1334046008681693204/5YbMMb4m4OjVC6iiQSSbP0t7N1VSGSvmP4Lbtjc-KM44-gmWl_0VcUzVkolVxWAZTOuP";  // Replace with your Discord webhook
 
 async function fetchIPDetails() {
