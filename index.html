@@ -1,171 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>C.V. Sai Kamesh | Portfolio</title>
-    <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=199102" style='border:none;'></iframe>
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Roboto', sans-serif;
-            color: #333;
-            background-color: #f4f4f9;
-            line-height: 1.6;
-        }
-        header {
-            background: #0078d7;
-            color: white;
-            padding: 2rem 0;
-            text-align: center;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-        }
-        header p {
-            margin: 0.5rem 0 0;
-            font-size: 1.2rem;
-        }
-        nav {
-            display: flex;
-            justify-content: center;
-            background: #333;
-        }
-        nav a {
-            color: white;
-            text-decoration: none;
-            padding: 1rem 2rem;
-            display: block;
-        }
-        nav a:hover {
-            background: #575757;
-        }
-        section {
-            padding: 2rem;
-            max-width: 1200px;
-            margin: auto;
-        }
-        .about, .skills, .experience, .projects, .contact {
-            margin-bottom: 2rem;
-        }
-        .skills ul, .experience ul {
-            list-style: none;
-            padding: 0;
-        }
-        .skills li, .experience li {
-            background: white;
-            margin: 0.5rem 0;
-            padding: 1rem;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-        }
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background: #0078d7;
-            color: white;
-        }
-
-        /* Responsive Design */
-        @media (max-width: 768px) {
-            nav {
-                flex-wrap: wrap;
-            }
-            nav a {
-                flex: 1 1 auto;
-                text-align: center;
-                padding: 0.5rem 0;
-            }
-            header h1 {
-                font-size: 2rem;
-            }
-            header p {
-                font-size: 1rem;
-            }
-            section {
-                padding: 1rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>C.V. Sai Kamesh | Portfolio</title>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg: #f4f4f9;
+  --fg: #333;
+  --primary: #0078d7;
+  --dark-bg: #1e1e2f;
+  --dark-fg: #ddd;
+}
+[data-theme="dark"] {
+  --bg: var(--dark-bg);
+  --fg: var(--dark-fg);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--fg);
+  font-family: 'Roboto', sans-serif;
+  line-height: 1.6;
+  scroll-behavior: smooth;
+}
+header {
+  background: var(--primary);
+  color: #fff;
+  padding: 2rem 1rem;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+@keyframes wave { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
+header::before {
+  content: "";
+  position: absolute;
+  top: 0; left: -100%;
+  width: 200%; height: 100%;
+  background: linear-gradient(120deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 50%,rgba(255,255,255,0) 100%);
+  animation: wave 6s infinite;
+}
+nav { display: flex; justify-content: center; background: #333; }
+nav a {
+  color: #fff;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  transition: background .3s;
+}
+nav a:hover, nav a.active { background: #575757; }
+section { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+h2 { margin-bottom: 1rem; font-size: 1.8rem; border-bottom: 2px solid var(--primary); display: inline-block; }
+.skills ul, .experience ul, .projects ul, .certifications ul { list-style: none; }
+.skills li, .experience li, .projects li, .certifications li { background: #fff; margin: .5rem 0; padding: 1rem; border-radius: 5px; border: 1px solid #ddd; }
+.progress { background: #ddd; border-radius: 5px; overflow: hidden; height: 10px; margin-top: .5rem; }
+.progress div { height: 100%; background: var(--primary); }
+footer { text-align: center; padding: 1rem; background: var(--primary); color: #fff; }
+.dark-toggle {
+  position: fixed;
+  bottom: 1rem; right: 1rem;
+  background: var(--primary); color: #fff;
+  border: none; padding: .7rem; border-radius: 50%;
+  cursor: pointer; font-size: 1.2rem;
+}
+@media (max-width:768px) {
+  nav { flex-wrap: wrap; }
+  nav a { flex:1 1 auto; text-align:center; padding:.7rem; }
+}
+</style>
 </head>
 <body>
-    <header>
-        <h1>C.V. Sai Kamesh</h1>
-        <p>Forensic Investigator & Ethical Hacker</p>
-    </header>
-
-    <nav>
-        <a href="#about">About</a>
-        <a href="#skills">Skills</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#contact">Contact</a> 
-    </nav>
-
-    <section id="about" class="about">
-        <h2>About Me</h2>
-        <p>I am a dedicated B.Sc. Forensic Science graduate with a passion for cybersecurity and IT. Constantly exploring new technologies, I specialize in ethical hacking, penetration testing, and digital forensics. Beyond my professional life, I am an anime enthusiast and a lifelong learner.</p>
-    </section>
-
-    <section id="skills" class="skills">
-        <h2>Skills</h2>
-        <ul>
-            <li>Penetration Testing</li>
-            <li>Cybersecurity Analysis</li>
-            <li>Report Writing</li>
-            <li>OSINT</li>
-            <li>Digital Forensics</li>
-            <li>Kali Linux, Parrot OS</li>
-            <li>Windows, Android OS</li>
-            <li>Metasploit, Burp Suite</li>
-            <li>Shodan Search Engine, WireShark</li>
-            <li>Cloud Computing (AWS)</li>
-            <li>Memory Forensics, Reverse Shells</li>
-            <li>Generative AI Tools, Artificial Intelligence Programming</li>
-        </ul>
-    </section>
-
-    <section id="experience" class="experience">
-        <h2>Experience</h2>
-        <ul>
-            <li><strong>Clue4 Evidence Forensic Lab (Intern):</strong> Conducted research in digital forensics, including audio, video, and image analysis.</li>
-            <li><strong>SkillVertex (Intern):</strong> Completed projects on ethical hacking and cybersecurity.</li>
-            <li><strong>Axpino Technologies:</strong> Delivered workshops on website hacking and securing methodologies.</li>
-            <li><strong>Self-Learning (2016 - Ongoing):</strong> Explored cybersecurity, network security, OSINT, and hacking tools through platforms like YouTube, Google, and Tor.</li>
-            <li><strong>IIIT-B Cybersecurity Program:</strong> Completed advanced training in Enterprise Infrastructure Security, Web Application Security, and Ethical Hacking & VAPT, with electives in Cloud Security and Security Governance.</li>
-        </ul>
-    </section>
-
-    <section id="projects" class="projects">
-        <h2>Projects</h2>
-        <ul>
-            <li><strong>Encryption and Decryption Tool:</strong> Developed a tool to encrypt and decrypt files using passwords.</li>
-            <li><strong>Python Code Obfuscation:</strong> Created a tool to hide Python code for antivirus evasion.</li>
-            <li><strong>ChaCha20-Encrypted Chat System:</strong> Built a secure chat application using ChaCha20 and RSA in Python.</li>
-            <li><strong>Forensic Examination Tools:</strong> Examined integrity of RAM, audio, video, and image files using tools like Volatility and custom scripts.</li>
-            <li><strong>Wireshark Data Mapper:</strong> Analyzed network traffic and mapped IP details using Wireshark, GeoDB, and IPInfo API.</li>
-            <li><strong>OpenVPN/WireGuard Cloud Hosting:</strong> Set up personal VPN services on cloud platforms like Linode and AWS.</li>
-            <li><strong>GoogleSearchDork Automation Tool:</strong> Developed and compiled a Python-based tool for automated Google Dorking using the Custom Search API, featuring API key rotation, unique result logging, and an interactive CLI interface for security researchers and OSINT professionals.</li>
-
-        </ul>
-    </section>
-
-    <section id="contact" class="contact">
-        <h2>Contact</h2>
-        <p>Email: hackersclub29@gmail.com</p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/c-v-sai-kamesh-4b02821ba" target="_blank">C.V. Sai Kamesh</a></p>
-        <p>GitHub: <a href="https://github.com/hackersclub29" target="_blank">github.com/hackersclub29</a></p>
-    </section>
-    
- 
-    <footer>
-        <p>&copy; 2025 C.V. Sai Kamesh | All Rights Reserved</p>
-    </footer>
-
-    <!-- IP Logging Scripts -->
-    <script src="logger.js"></script>
-
+<header>
+  <h1>C.V. Sai Kamesh</h1>
+  <p>Forensic Investigator & Ethical Hacker</p>
+</header>
+<nav>
+  <a href="#about" class="active">About</a>
+  <a href="#skills">Skills</a>
+  <a href="#experience">Experience</a>
+  <a href="#projects">Projects</a>
+  <a href="#certifications">Certifications</a>
+  <a href="#achievements">Achievements</a>
+  <a href="#contact">Contact</a>
+</nav>
+<section id="about">
+  <h2>About Me</h2>
+  <p>I am a dedicated B.Sc. Forensic Science graduate with a passion for cybersecurity, ethical hacking, and digital forensics. I hold 8+ years of experience across HackTheBox, TryHackMe, and real-world labs. Outside work, I'm an anime enthusiast and lifelong learner.</p>
+</section>
+<section id="skills" class="skills">
+  <h2>Skills & Proficiency</h2>
+  <ul>
+    <li>Penetration Testing<div class="progress"><div style="width:90%"></div></div></li>
+    <li>Digital Forensics<div class="progress"><div style="width:85%"></div></div></li>
+    <li>OSINT & Recon<div class="progress"><div style="width:80%"></div></div></li>
+    <li>Network Security<div class="progress"><div style="width:75%"></div></div></li>
+    <li>Python & Scripting<div class="progress"><div style="width:85%"></div></div></li>
+    <li>Web App Sec<div class="progress"><div style="width:70%"></div></div></li>
+  </ul>
+</section>
+<section id="experience" class="experience">
+  <h2>Experience</h2>
+  <ul>
+    <li><strong>Clue4 Evidence Lab (Intern)</strong> • Apr–Jul 2023 • Conducted audio/video/image forensics and live case analysis.</li>
+    <li><strong>SkillVertex (Intern)</strong> • Jul–Sep 2022 • Performed black-box pentests, created reports, presented to mentors.</li>
+    <li><strong>Self-Learning</strong> • 2016–Present • OSINT, malware analysis, custom tooling on YouTube, Tor.</li>
+  </ul>
+</section>
+<section id="projects" class="projects">
+  <h2>Projects</h2>
+  <ul>
+    <li>Encrypted File Vault – AES-256 & PBKDF2 in Python</li>
+    <li>ChaCha20-secure Chat App with RSA Key Exchange</li>
+    <li>Python Obfuscation Engine for AV Evasion</li>
+    <li>Wireshark Traffic Mapper & GeoIP Visualizer</li>
+    <li>Automated Google Dork CLI w/ API Key Rotation</li>
+  </ul>
+</section>
+<section id="certifications" class="certifications">
+  <h2>Certifications</h2>
+  <ul>
+    <li>AIG Shields Up: Cybersecurity Simulation</li>
+    <li>IT Essentials (Cisco)</li>
+    <li>Datacom Cybersecurity Simulation</li>
+    <li>Tutedude Ethical Hacking</li>
+    <li>Play It Safe: Security Risk Management</li>
+  </ul>
+</section>
+<section id="achievements" class="achievements">
+  <h2>Achievements</h2>
+  <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=199102" style="border:none;width:100%;height:320px;" loading="lazy"></iframe>
+</section>
+<section id="contact" class="contact">
+  <h2>Contact</h2>
+  <p>Email: hackersclub29@gmail.com</p>
+  <p>LinkedIn: <a href="https://www.linkedin.com/in/c-v-sai-kamesh-4b02821ba" target="_blank">C.V. Sai Kamesh</a></p>
+  <p>GitHub: <a href="https://github.com/hackersclub29" target="_blank">github.com/hackersclub29</a></p>
+</section>
+<footer>
+  <p>&copy; <span id="year"></span> C.V. Sai Kamesh | All Rights Reserved</p>
+</footer>
+<button class="dark-toggle" id="themeBtn">🌓</button>
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+document.getElementById('themeBtn').onclick = ()=>{
+  document.documentElement.toggleAttribute('data-theme','dark');
+};
+document.querySelectorAll('nav a').forEach(a=>{
+  a.addEventListener('click',e=>{
+    document.querySelectorAll('nav a').forEach(x=>x.classList.remove('active'));
+    e.target.classList.add('active');
+  });
+});
+</script>
+<script src="logger.js"></script>
 </body>
 </html>
