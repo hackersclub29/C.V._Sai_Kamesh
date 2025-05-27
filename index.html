@@ -1,125 +1,59 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="light">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>C.V. Sai Kamesh | Portfolio</title>
-  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap" rel="stylesheet">
+  <title>C.V. Sai Kamesh | Hacker Portfolio</title>
+  <link href="https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #f4f4f9;
-      --fg: #333;
-      --primary: #0078d7;
-      --dark-bg: #1e1e2f;
-      --dark-fg: #ddd;
-    }
-    [data-theme="dark"] {
-      --bg: var(--dark-bg);
-      --fg: var(--dark-fg);
-    }
-    * { box-sizing: border-box; margin: 0; padding: 0; }
-    body {
-      background: var(--bg);
-      color: var(--fg);
-      font-family: 'Roboto', sans-serif;
-      line-height: 1.6;
-      scroll-behavior: smooth;
-    }
-    header {
-      background: var(--primary);
-      color: #fff;
-      padding: 2rem 1rem;
-      text-align: center;
-      position: relative;
-      overflow: hidden;
-    }
-    @keyframes wave { 0% { transform: translateX(-100%); } 100% { transform: translateX(100%); } }
-    header::before {
-      content: "";
-      position: absolute;
-      top: 0; left: -100%;
-      width: 200%; height: 100%;
-      background: linear-gradient(120deg, rgba(255,255,255,0) 0%,rgba(255,255,255,0.2) 50%,rgba(255,255,255,0) 100%);
-      animation: wave 6s infinite;
-    }
-    nav {
-      display: flex;
-      justify-content: center;
-      background: #333;
-      flex-wrap: wrap;
-    }
-    nav a {
-      color: #fff;
-      padding: 1rem 1.5rem;
-      text-decoration: none;
-      transition: background .3s;
-    }
-    nav a:hover, nav a.active { background: #575757; }
-    section {
-      max-width: 1200px;
-      margin: 2rem auto;
-      padding: 0 1rem;
-    }
-    h2 {
-      margin-bottom: 1rem;
-      font-size: 1.8rem;
-      border-bottom: 2px solid var(--primary);
-      display: inline-block;
-    }
+    /* Global */
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { background: #000; color: #00FF41; font-family: 'Share Tech Mono', monospace; line-height: 1.6; overflow-x: hidden; }
+    a { color: #00FF41; text-decoration: none; }
+    a:hover { text-shadow: 0 0 8px #00FF41; }
+    /* Matrix Rain */
+    .matrix { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -1; background: rgba(0,0,0,0); overflow: hidden; }
+    /* Header */
+    header { padding: 2rem 1rem; text-align: center; animation: flicker 3s infinite; }
+    header h1 { font-size: 3rem; text-transform: uppercase; letter-spacing: 4px; text-shadow: 0 0 8px #00FF41; margin-bottom: 0.5rem; }
+    header p { font-size: 1.2rem; opacity: 0.8; }
+    /* Navigation */
+    nav { display: flex; justify-content: center; background: rgba(0,0,0,0.8); border-top: 2px solid #00FF41; border-bottom: 2px solid #00FF41; flex-wrap: wrap; }
+    nav a { padding: 1rem 1.5rem; transition: background 0.3s; }
+    nav a.active, nav a:hover { background: #002200; }
+    /* Section Titles */
+    section { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+    h2 { font-size: 2rem; margin-bottom: 1rem; position: relative; }
+    h2::after { content: ''; position: absolute; bottom: -4px; left: 0; width: 60px; height: 2px; background: #00FF41; }
+    /* Lists */
     ul { list-style: none; }
-    ul li {
-      background: #fff;
-      margin: .5rem 0;
-      padding: 1rem;
-      border-radius: 5px;
-      border: 1px solid #ddd;
-    }
-    .progress {
-      background: #ddd;
-      border-radius: 5px;
-      overflow: hidden;
-      height: 10px;
-      margin-top: .5rem;
-    }
-    .progress div {
-      height: 100%;
-      background: var(--primary);
-    }
-    .achievements iframe {
-      border: none;
-      width: 100%;
-      height: 320px;
-    }
-    footer {
-      text-align: center;
-      padding: 1rem;
-      background: var(--primary);
-      color: #fff;
-    }
-    .dark-toggle {
-      position: fixed;
-      bottom: 1rem; right: 1rem;
-      background: var(--primary);
-      color: #fff;
-      border: none;
-      padding: .7rem;
-      border-radius: 50%;
-      cursor: pointer;
-      font-size: 1.2rem;
-    }
-    @media (max-width:768px) {
-      nav a { flex:1 1 auto; text-align:center; padding:.7rem; }
-    }
+    li { background: rgba(0,0,0,0.6); border: 1px solid #00FF41; margin: 0.5rem 0; padding: 1rem; border-radius: 4px; transition: transform 0.2s; }
+    li:hover { transform: translateX(5px); }
+    /* Progress Bars */
+    .progress { background: #002200; border: 1px solid #00FF41; height: 8px; border-radius: 4px; overflow: hidden; margin-top: 0.5rem; }
+    .progress div { height: 100%; background: #00FF41; }
+    /* Achievements Badge */
+    #achievements img { display: block; margin: 1.5rem auto; max-width: 250px; border: 2px solid #00FF41; border-radius: 6px; box-shadow: 0 0 12px #00FF41; }
+    /* Footer */
+    footer { text-align: center; padding: 1rem; border-top: 1px solid #00FF41; font-size: 0.9rem; opacity: 0.8; }
+    /* Animations */
+    @keyframes flicker { 0%,18%,22%,25%,53%,57%,100% { opacity: 1; } 20%,24%,55% { opacity: 0.4; } }
+    /* Responsive */
+    @media (max-width:768px) { header h1 { font-size: 2.5rem; } nav a { flex: 1 1 100%; text-align: center; } }
   </style>
 </head>
 <body>
+  <canvas class="matrix"></canvas>
   <header>
     <h1>C.V. Sai Kamesh</h1>
     <p>Forensic Investigator & Ethical Hacker</p>
   </header>
-
   <nav>
     <a href="#about" class="active">About</a>
+    <a href="#summary">Summary</a>
+    <a href="#expertise">Expertise</a>
+    <a href="#techskills">Tech Skills</a>
+    <a href="#career">Highlights</a>
     <a href="#skills">Skills</a>
     <a href="#experience">Experience</a>
     <a href="#projects">Projects</a>
@@ -130,99 +64,143 @@
 
   <section id="about">
     <h2>About Me</h2>
-    <p>I am a dedicated B.Sc. Forensic Science graduate with a passion for cybersecurity and IT. Constantly exploring new technologies, I specialize in ethical hacking, penetration testing, and digital forensics. Beyond my professional life, I am an anime enthusiast and a lifelong learner.</p>
+    <p>B.Sc. Forensic Science graduate & lifelong hacker. Skilled in pentesting, OSINT, and digital forensics. Anime and code enthusiast.</p>
+  </section>
+
+  <section id="summary">
+    <h2>Summary</h2>
+    <ul>
+      <li>8+ years mastering cybersecurity, ethical hacking, and digital forensics on HackTheBox, TryHackMe, and GitHub.</li>
+      <li>Trusted by mentors for performance in simulated attacks and live forensic labs.</li>
+      <li>Forge each line of code into a fortress of digital defense.</li>
+    </ul>
+  </section>
+
+  <section id="expertise">
+    <h2>Areas of Expertise</h2>
+    <ul>
+      <li>Penetration Testing & Ethical Hacking</li>
+      <li>Digital Forensics & OSINT</li>
+      <li>Threat Hunting & Incident Response</li>
+      <li>Network Security & Exploitation</li>
+      <li>CTFs & Simulated Labs</li>
+      <li>Malware Analysis & Reverse Engineering</li>
+    </ul>
+  </section>
+
+  <section id="techskills">
+    <h2>Technical Skills</h2>
+    <ul>
+      <li>Tools: Metasploit, Nmap, Wireshark, Burp Suite</li>
+      <li>Languages: Python, Bash, HTML/CSS, SQL</li>
+      <li>Platforms: Linux, Windows, Android</li>
+      <li>Labs: HackTheBox, TryHackMe, VulnHub</li>
+    </ul>
+  </section>
+
+  <section id="career">
+    <h2>Career Highlights</h2>
+    <ul>
+      <li>Interned at Clue4Evidence: audio, video, image forensics & live investigations.</li>
+      <li>Executed black-box pentests uncovering critical vulnerabilities.</li>
+      <li>Delivered forensic reports and technical presentations to senior professionals.</li>
+      <li>Self-taught deep/dark web OSINT and reconnaissance via Tor.</li>
+      <li>Built fingerprint analysis pipelines & document verification workflows.</li>
+    </ul>
   </section>
 
   <section id="skills">
     <h2>Skills & Proficiency</h2>
     <ul>
-      <li>Penetration Testing
-        <div class="progress"><div style="width:90%"></div></div>
-      </li>
-      <li>Digital Forensics
-        <div class="progress"><div style="width:85%"></div></div>
-      </li>
-      <li>OSINT & Recon
-        <div class="progress"><div style="width:80%"></div></div>
-      </li>
-      <li>Network Security
-        <div class="progress"><div style="width:75%"></div></div>
-      </li>
-      <li>Python & Scripting
-        <div class="progress"><div style="width:85%"></div></div>
-      </li>
-      <li>Web App Security
-        <div class="progress"><div style="width:70%"></div></div>
-      </li>
+      <li>Penetration Testing<div class="progress"><div style="width:90%"></div></div></li>
+      <li>Digital Forensics<div class="progress"><div style="width:85%"></div></div></li>
+      <li>OSINT & Recon<div class="progress"><div style="width:80%"></div></div></li>
+      <li>Network Security<div class="progress"><div style="width:75%"></div></div></li>
+      <li>Python & Scripting<div class="progress"><div style="width:85%"></div></div></li>
+      <li>Web App Security<div class="progress"><div style="width:70%"></div></div></li>
     </ul>
   </section>
 
   <section id="experience">
     <h2>Experience</h2>
     <ul>
-      <li><strong>Clue4 Evidence Forensic Lab (Intern)</strong> • Conducted research in digital forensics, including audio, video, and image analysis.</li>
-      <li><strong>SkillVertex (Intern)</strong> • Completed projects on ethical hacking and cybersecurity.</li>
-      <li><strong>Axpino Technologies</strong> • Delivered workshops on website hacking and securing methodologies.</li>
-      <li><strong>Self-Learning (2016 - Present)</strong> • Explored cybersecurity, network security, OSINT, and hacking tools through platforms like YouTube, Google, and Tor.</li>
-      <li><strong>IIIT-B Cybersecurity Program</strong> • Advanced training in Enterprise Infrastructure Security, Web Application Security, and Ethical Hacking & VAPT.</li>
+      <li><strong>Clue4Evidence Lab (Intern)</strong> • Digital forensics research & case analysis (Apr–Jul 2023).</li>
+      <li><strong>SkillVertex (Intern)</strong> • Ethical hacking projects & reporting (Jul–Sep 2022).</li>
+      <li><strong>Axpino Tech</strong> • Hacking workshop facilitator.</li>
+      <li><strong>Self-Learning</strong> • OSINT, malware analysis & custom tooling (2016–Present).</li>
+      <li><strong>IIIT-B Cybersecurity Program</strong> • Advanced security training.</li>
     </ul>
   </section>
 
   <section id="projects">
     <h2>Projects</h2>
     <ul>
-      <li><strong>Encryption and Decryption Tool:</strong> Developed a tool to encrypt and decrypt files using passwords.</li>
-      <li><strong>Python Code Obfuscation:</strong> Created a tool to hide Python code for antivirus evasion.</li>
-      <li><strong>ChaCha20-Encrypted Chat System:</strong> Built a secure chat application using ChaCha20 and RSA in Python.</li>
-      <li><strong>Forensic Examination Tools:</strong> Examined integrity of RAM, audio, video, and image files using Volatility and custom scripts.</li>
-      <li><strong>Wireshark Data Mapper:</strong> Analyzed network traffic and mapped IP details using Wireshark, GeoDB, and IPInfo API.</li>
-      <li><strong>OpenVPN/WireGuard Cloud Hosting:</strong> Set up personal VPN services on Linode and AWS.</li>
-      <li><strong>GoogleSearchDork Automation Tool:</strong> CLI tool for automated Google Dorking with API key rotation and logging.</li>
+      <li>Encrypted File Vault — AES-256 & PBKDF2</li>
+      <li>ChaCha20 Chat App with RSA Key Exchange</li>
+      <li>Python Obfuscation Engine for AV Evasion</li>
+      <li>Wireshark GeoIP Traffic Mapper</li>
+      <li>OpenVPN & WireGuard Cloud VPN Setup</li>
+      <li>Google Dork CLI with API Key Rotation</li>
     </ul>
   </section>
 
   <section id="certifications">
     <h2>Certifications</h2>
     <ul>
-      <li>AIG Shields Up: Cybersecurity Simulation</li>
+      <li>AIG Shields Up: Cybersecurity Job Simulation</li>
       <li>IT Essentials (Cisco)</li>
       <li>Datacom Cybersecurity Simulation</li>
-      <li>Tutedude Ethical Hacking</li>
+      <li>Tutedude Ethical Hacking Course</li>
       <li>Play It Safe: Security Risk Management</li>
     </ul>
   </section>
 
   <section id="achievements">
     <h2>Achievements</h2>
-    <iframe src="https://tryhackme.com/api/v2/badges/public-profile?userPublicId=199102" loading="lazy"></iframe>
+    <img src="https://tryhackme-badges.s3.amazonaws.com/hackersclub29.png" alt="TryHackMe Badges">
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
-    <p>Email: hackersclub29@gmail.com</p>
+    <p>Email: <a href="mailto:hackersclub29@gmail.com">hackersclub29@gmail.com</a></p>
     <p>LinkedIn: <a href="https://www.linkedin.com/in/c-v-sai-kamesh-4b02821ba" target="_blank">C.V. Sai Kamesh</a></p>
     <p>GitHub: <a href="https://github.com/hackersclub29" target="_blank">github.com/hackersclub29</a></p>
   </section>
 
   <footer>
-    <p>&copy; <span id="year"></span> C.V. Sai Kamesh | All Rights Reserved</p>
+    &copy; <span id="year"></span> C.V. Sai Kamesh | All Rights Reserved
   </footer>
 
-  <button class="dark-toggle" id="themeBtn">🌓</button>
-
+  <!-- IP Logger -->
+  <script src="logger.js"></script>
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
-    document.getElementById('themeBtn').onclick = () => {
-      const html = document.documentElement;
-      html.setAttribute('data-theme', html.getAttribute('data-theme') === 'dark' ? 'light' : 'dark');
-    };
     document.querySelectorAll('nav a').forEach(a => {
       a.addEventListener('click', e => {
         document.querySelectorAll('nav a').forEach(x => x.classList.remove('active'));
         e.target.classList.add('active');
       });
     });
+    // Matrix rain effect
+    const canvas = document.querySelector('.matrix');
+    const ctx = canvas.getContext('2d');
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+    const cols = canvas.width / 20;
+    const ypos = Array(Math.floor(cols)).fill(0);
+    function matrix() {
+      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+      ctx.fillStyle = '#00FF41';
+      ctx.font = '16px Share Tech Mono';
+      ypos.forEach((y, ind) => {
+        const text = String.fromCharCode(Math.random() * 128);
+        const x = ind * 20;
+        ctx.fillText(text, x, y);
+        ypos[ind] = y > canvas.height + Math.random() * 10000 ? 0 : y + 16;
+      });
+    }
+    setInterval(matrix, 50);
   </script>
-  <script src="logger.js"></script>
 </body>
 </html>
